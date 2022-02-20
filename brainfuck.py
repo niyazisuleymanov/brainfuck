@@ -7,6 +7,7 @@ CELL_SIZE = 9.223372036854776e+18
 def format(code: str) -> str:
   commands = ['>', '<', '+', '-', '.', ',', '[', ']']
   return ''.join(filter(lambda x: x in commands, code))
+
 def run(filename: str) -> None:
   if not os.path.isfile(filename):
     print(f'No file named "{filename}" was found')
@@ -35,7 +36,6 @@ def locate_brackets(code: str) -> list[int]:
       brackets[start] = position
       brackets[position] = start
   return brackets
-
 
 def process(code: str) -> None:
   cells, cell_ptr, code_ptr, brackets = [0], 0, 0, locate_brackets(code)
